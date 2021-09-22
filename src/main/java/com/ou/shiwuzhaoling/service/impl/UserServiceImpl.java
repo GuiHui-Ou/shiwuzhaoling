@@ -37,13 +37,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         if (userDTO.getUserMobile() != null){
             User user = baseMapper.selectOne(queryWrapper);
             //判断手机是否存在
-            if (user != null && userDTO.getUserPassword() != null && userDTO.getUserName() != null){
+            if (user == null && userDTO.getUserPassword() != null && userDTO.getUserName() != null){
                 baseMapper.insert(userDTO.toUserPO());
                 return true;
             }
-
         }
         return false;
     }
-
 }

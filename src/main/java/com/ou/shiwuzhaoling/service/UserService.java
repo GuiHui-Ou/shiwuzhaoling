@@ -3,7 +3,6 @@ package com.ou.shiwuzhaoling.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ou.shiwuzhaoling.entity.dto.UserDTO;
 import com.ou.shiwuzhaoling.entity.po.User;
-import com.ou.shiwuzhaoling.entity.request.UserRequest;
 
 /**
  * @author leo
