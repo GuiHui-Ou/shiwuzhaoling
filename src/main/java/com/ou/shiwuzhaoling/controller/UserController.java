@@ -34,5 +34,4 @@ public class UserController{
         return res ? Result.OK() : Result.error("该手机已被注册");
     }
 
-
 }

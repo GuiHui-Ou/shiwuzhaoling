@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import sun.util.calendar.BaseCalendar;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,7 +16,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "user")
+@Table(name = "goods")
 public class Goods {
 
     @Id

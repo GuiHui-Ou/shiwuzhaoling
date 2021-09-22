@@ -17,5 +17,4 @@ public interface ManageService extends IService<Manage> {
      */
     boolean manageLogin(String managementMobile , String managementPassword);
 
-    Manage selectOne(String managementMobile , String managementPassword);
 }

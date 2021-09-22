@@ -14,8 +14,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService{
-    @Autowired
-    UserMapper userMapper;
 
     @Override
     public boolean userLogin(String userMobile, String userPassword) {

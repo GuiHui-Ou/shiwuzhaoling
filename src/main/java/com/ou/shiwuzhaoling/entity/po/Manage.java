@@ -16,7 +16,7 @@ import javax.persistence.*;
 @Table(name = "manage")
 public class Manage {
 
-    @javax.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @TableId(type = IdType.AUTO)
     @Column(name = "id")

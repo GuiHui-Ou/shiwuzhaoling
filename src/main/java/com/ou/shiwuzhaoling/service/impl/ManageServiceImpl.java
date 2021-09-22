@@ -15,9 +15,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class ManageServiceImpl extends ServiceImpl<ManageMapper, Manage> implements ManageService {
 
-    @Autowired
-    ManageMapper manageMapper;
-
     @Override
     public boolean manageLogin(String managementMobile, String managementPassword) {
         LambdaQueryWrapper<Manage> lambdaQueryWrapper = new LambdaQueryWrapper<>(Manage.class);
@@ -33,16 +30,4 @@ public class ManageServiceImpl extends ServiceImpl<ManageMapper, Manage> impleme
         return false;
     }
 
-    @Override
-    public Manage selectOne(String managementMobile, String managementPassword) {
-        LambdaQueryWrapper<Manage> lambdaQueryWrapper = new LambdaQueryWrapper<>(Manage.class);
-        Manage manage = new Manage();
-        if (managementMobile != null && managementPassword != null) {
-            lambdaQueryWrapper.eq(Manage::getManagementMobile, managementMobile)
-                    .eq(Manage::getManagementPassword, managementPassword);
-            manage = baseMapper.selectOne(lambdaQueryWrapper);
-        }
-        return manage;
-
-    }
 }
