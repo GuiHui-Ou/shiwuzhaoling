@@ -32,6 +32,11 @@ public class GoodsInfo {
 
     private Date pickTime;
 
+    private String goodsType;
+
+    private Integer goodsStatus;
+
+
     public GoodsInfo parseFromPO(Goods po) {
         goodsId = po.getGoodsId();
         goodsName = po.getGoodsName();
@@ -39,6 +44,8 @@ public class GoodsInfo {
         goodsPicker = po.getGoodsPicker();
         pickAddress = po.getPickAddress();
         pickTime = po.getPickTime();
+        goodsType = po.getGoodsType();
+        goodsStatus = po.getGoodsStatus();
         return this;
     }
 

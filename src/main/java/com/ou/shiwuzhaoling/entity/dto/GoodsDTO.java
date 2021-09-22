@@ -31,6 +31,9 @@ public class GoodsDTO {
 
     private Date pickTime;
 
+    private String goodsType;
+
+
     public Goods toGoodsPO() {
         Goods goods = new Goods();
         goods.setGoodsId(this.goodsId);
@@ -39,6 +42,7 @@ public class GoodsDTO {
         goods.setGoodsPicker(this.goodsPicker);
         goods.setPickAddress(this.pickAddress);
         goods.setPickTime(this.pickTime);
+        goods.setGoodsType(this.goodsType);
         return goods;
     }
 

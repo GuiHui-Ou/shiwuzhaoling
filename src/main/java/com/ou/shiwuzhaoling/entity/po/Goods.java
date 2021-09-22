@@ -3,6 +3,7 @@ package com.ou.shiwuzhaoling.entity.po;
 import cn.hutool.db.DaoTemplate;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 @Table(name = "goods")
 public class Goods {
 
@@ -39,4 +41,10 @@ public class Goods {
 
     @Column(name = "pick_time")
     private Date pickTime;
+
+    @Column(name = "goods_type")
+    private String goodsType;
+
+    @Column(name = "goods_status")
+    private Integer goodsStatus;
 }

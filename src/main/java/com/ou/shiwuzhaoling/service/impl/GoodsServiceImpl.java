@@ -1,9 +1,9 @@
 package com.ou.shiwuzhaoling.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ou.shiwuzhaoling.entity.dto.GoodsDTO;
 import com.ou.shiwuzhaoling.entity.po.Goods;
@@ -20,10 +20,15 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements
 
 
     @Override
-    public IPage<Goods> queryGoods(Integer pageNum, Integer pageSize){
+    public IPage<Goods> queryGoods(Integer pageNum, Integer pageSize, String goodsType , Integer goodsStatus){
         Page<Goods> page = new Page<>(pageNum, pageSize);
         LambdaQueryWrapper<Goods> queryWrapper = new LambdaQueryWrapper<>(Goods.class);
-        queryWrapper.orderByDesc(Goods::getGoodsDesc);
+        if (goodsStatus != null){
+            queryWrapper.eq(Goods::getGoodsStatus,goodsStatus);
+        }
+        if (goodsType != null){
+            queryWrapper.eq(Goods::getGoodsType,goodsType);
+        }
         return baseMapper.selectPage(page,queryWrapper);
     }
 
@@ -48,6 +53,20 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements
             baseMapper.updateById(goodsDTO.toGoodsPO());
         return true;
         }
+        return true;
+    }
+
+    @Override
+    public boolean claimGoods(Integer goodsId , Integer goodsStatus) {
+        Goods goods = new Goods();
+        goods.setGoodsId(goodsId);
+        if (goodsStatus == 0){
+            goods.setGoodsStatus(1);
+
+        }if(goodsStatus == 1){
+            goods.setGoodsStatus(2);
+        }
+        baseMapper.updateById(goods);
         return true;
     }
 

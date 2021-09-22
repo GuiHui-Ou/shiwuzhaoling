@@ -22,14 +22,14 @@ public class UserController{
 
     @ApiOperation("用户-登录验证")
     @PostMapping (value = "/login")
-    public Result<?> login(@RequestBody UserRequest request){
+    public Result login(@RequestBody UserRequest request){
         boolean res = userService.userLogin(request.getUserMobile(),request.getUserPassword());
         return res ? Result.OK() : Result.error("没有该用户");
     }
 
     @ApiOperation("用户-注册")
     @PostMapping (value = "/register")
-    public Result<?> Register(@RequestBody UserDTO userDTO){
+    public Result Register(@RequestBody UserDTO userDTO){
         boolean res = userService.userRegister(userDTO);
         return res ? Result.OK() : Result.error("该手机已被注册");
     }

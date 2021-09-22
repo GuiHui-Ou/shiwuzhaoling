@@ -24,7 +24,7 @@ public class ManageController {
 
     @ApiModelProperty("管理员登陆")
     @PostMapping(value = "/login")
-    public Result<?> login(@RequestBody ManageRequest request){
+    public Result login(@RequestBody ManageRequest request){
         boolean res = manageService.manageLogin(request.getManagementMobile(),request.getManagementPassword());
         return res ? Result.OK() : Result.error("没有该用户");
     }

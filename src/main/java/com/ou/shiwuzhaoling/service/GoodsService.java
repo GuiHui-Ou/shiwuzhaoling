@@ -4,6 +4,9 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ou.shiwuzhaoling.entity.dto.GoodsDTO;
 import com.ou.shiwuzhaoling.entity.po.Goods;
+import com.ou.shiwuzhaoling.entity.request.GoodsRequest;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
 import java.util.List;
 import java.awt.*;
 
@@ -15,9 +18,11 @@ public interface GoodsService extends IService<Goods> {
      * 查询所有失物
      * @param pageNum
      * @param pageSize
+     * @param goodsType
+     * @param goodsStatus
      * @return
      */
-    IPage<Goods> queryGoods(Integer pageNum, Integer pageSize);
+    IPage<Goods> queryGoods(Integer pageNum, Integer pageSize, String goodsType , Integer goodsStatus);
 
     /**
      * 插入失物信息
@@ -39,4 +44,12 @@ public interface GoodsService extends IService<Goods> {
      * @return
      */
     boolean updateGoods(GoodsDTO goodsDTO);
+
+    /**
+     * 认领失物
+     * @param goodsId
+     * @return
+     */
+    boolean claimGoods(Integer goodsId, Integer goodsStatus);
+
 }
