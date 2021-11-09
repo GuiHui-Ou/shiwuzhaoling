@@ -19,13 +19,10 @@ import java.util.List;
 public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements GoodsService {
 
     @Override
-    public List<Goods> queryGoods(String goodsType , Integer goodsStatus){
+    public List<Goods> queryGoods(Integer goodsStatus){
         LambdaQueryWrapper<Goods> queryWrapper = new LambdaQueryWrapper<>(Goods.class);
         if (goodsStatus != null){
             queryWrapper.eq(Goods::getGoodsStatus,goodsStatus);
-        }
-        if (goodsType != null){
-            queryWrapper.eq(Goods::getGoodsType,goodsType);
         }
         return baseMapper.selectList(queryWrapper);
     }
@@ -91,6 +88,10 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements
         return baseMapper.selectList(queryWrapper);
     }
 
+    @Override
+    public int Num() {
+        return baseMapper.Num();
+    }
 
 
 }

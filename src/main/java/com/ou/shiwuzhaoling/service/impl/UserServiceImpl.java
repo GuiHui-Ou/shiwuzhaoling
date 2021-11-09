@@ -33,7 +33,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         if (user.getUserMobile() != null){
             User user1 = baseMapper.selectOne(queryWrapper);
             //判断手机是否存在
-            if (user == null && user.getUserPassword() != null && user.getUserName() != null){
+            if (user1 == null && user.getUserPassword() != null && user.getUserMobile().length() == 11 && user.getUserName() != null){
                 baseMapper.insert(user);
                 return true;
             }

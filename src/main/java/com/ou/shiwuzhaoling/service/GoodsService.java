@@ -14,12 +14,11 @@ import java.util.List;
  */
 public interface GoodsService extends IService<Goods> {
     /**
-     * 查询所有失物
-     * @param goodsType
+     * 查询所有失物,或根据认领状态查询
      * @param goodsStatus
      * @return
      */
-    List<Goods> queryGoods(String goodsType ,Integer goodsStatus);
+    List<Goods> queryGoods(Integer goodsStatus);
 
     /**
      * 插入失物信息
@@ -72,5 +71,11 @@ public interface GoodsService extends IService<Goods> {
      * @return Goods
      */
     List<Goods>userClaim(Integer userId);
+
+    /**
+     * 认领的总数
+     * @return
+     */
+    int Num();
 
 }

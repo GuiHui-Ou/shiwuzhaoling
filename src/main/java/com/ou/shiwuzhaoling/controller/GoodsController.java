@@ -26,7 +26,7 @@ public class GoodsController extends BaseController {
     @ApiOperation("失物-查找全部或根据认领状态或根据认领类型查找")
     @GetMapping(value = "/query")
     public Result<List<Goods>> queryGoods(@RequestBody Goods goods){
-        List<Goods> goodsList = goodsService.queryGoods(goods.getGoodsType() ,goods.getGoodsStatus());
+        List<Goods> goodsList = goodsService.queryGoods(goods.getGoodsStatus());
         return Result.OK(goodsList);
     }
 
@@ -77,5 +77,12 @@ public class GoodsController extends BaseController {
     public  Result<List<Goods>> userClaim(@RequestBody Goods goods){
         List<Goods> goodsList = goodsService.userClaim(goods.getUserId());
         return Result.OK(goodsList);
+    }
+
+    @ApiOperation("失物-失物总数")
+    @GetMapping(value = "/num")
+    public Result Num(){
+        int num = goodsService.Num();
+        return Result.OK(num);
     }
 }
