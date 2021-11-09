@@ -1,7 +1,7 @@
 package com.ou.shiwuzhaoling.controller;
 
 import com.ou.shiwuzhaoling.common.Result;
-import com.ou.shiwuzhaoling.entity.request.ManageRequest;
+import com.ou.shiwuzhaoling.entity.po.Manage;
 import com.ou.shiwuzhaoling.service.ManageService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModelProperty;
@@ -24,8 +24,8 @@ public class ManageController {
 
     @ApiModelProperty("管理员登陆")
     @PostMapping(value = "/login")
-    public Result login(@RequestBody ManageRequest request){
-        boolean res = manageService.manageLogin(request.getManagementMobile(),request.getManagementPassword());
+    public Result login(@RequestBody Manage manage){
+        boolean res = manageService.manageLogin(manage.getManagementMobile(),manage.getManagementPassword());
         return res ? Result.OK() : Result.error("没有该用户");
     }
 

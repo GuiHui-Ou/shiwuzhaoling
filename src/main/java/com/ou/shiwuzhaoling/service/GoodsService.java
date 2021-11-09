@@ -2,13 +2,10 @@ package com.ou.shiwuzhaoling.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.ou.shiwuzhaoling.entity.dto.GoodsDTO;
 import com.ou.shiwuzhaoling.entity.po.Goods;
-import com.ou.shiwuzhaoling.entity.request.GoodsRequest;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import java.util.List;
-import java.awt.*;
+import java.util.Date;
+
 
 /**
  * @author leo
@@ -26,10 +23,10 @@ public interface GoodsService extends IService<Goods> {
 
     /**
      * 插入失物信息
-     * @param goodsDTO
+     * @param goods
      * @return
      */
-    boolean insertGoods(GoodsDTO goodsDTO);
+    boolean insertGoods(Goods goods);
 
     /**
      * 删除失物信息
@@ -40,16 +37,33 @@ public interface GoodsService extends IService<Goods> {
 
     /**
      * 更新失物信息
-     * @param goodsDTO
+     * @param goods
      * @return
      */
-    boolean updateGoods(GoodsDTO goodsDTO);
+    boolean updateGoods(Goods goods);
 
     /**
-     * 认领失物
-     * @param goodsId
+     * 失物认领
+     * @param claimTime
+     * @param claimDesc
+     * @param userId
+     * @param userName
      * @return
      */
-    boolean claimGoods(Integer goodsId, Integer goodsStatus);
+    boolean claimGoods(Goods goods,Date claimTime,String claimDesc,Integer userId,String userName);
+
+    /**
+     * 确认认领
+     * @param goods
+     * @return
+     */
+    boolean enterClaim(Goods goods);
+
+    /**
+     * 取消认领
+     * @param goods
+     * @return
+     */
+    boolean cancelClaim(Goods goods);
 
 }

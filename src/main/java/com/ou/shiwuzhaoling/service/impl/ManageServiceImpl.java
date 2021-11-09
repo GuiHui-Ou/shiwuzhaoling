@@ -3,10 +3,8 @@ package com.ou.shiwuzhaoling.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ou.shiwuzhaoling.entity.po.Manage;
-import com.ou.shiwuzhaoling.entity.request.ManageRequest;
 import com.ou.shiwuzhaoling.mapper.ManageMapper;
 import com.ou.shiwuzhaoling.service.ManageService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**

@@ -2,7 +2,6 @@ package com.ou.shiwuzhaoling.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ou.shiwuzhaoling.entity.po.Manage;
-import com.ou.shiwuzhaoling.entity.request.ManageRequest;
 
 /**
  * @author leo

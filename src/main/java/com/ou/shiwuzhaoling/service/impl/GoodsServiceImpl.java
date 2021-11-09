@@ -4,11 +4,12 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.ou.shiwuzhaoling.entity.dto.GoodsDTO;
 import com.ou.shiwuzhaoling.entity.po.Goods;
 import com.ou.shiwuzhaoling.mapper.GoodsMapper;
 import com.ou.shiwuzhaoling.service.GoodsService;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 
 
 /**
@@ -32,9 +33,9 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements
     }
 
     @Override
-    public boolean insertGoods(GoodsDTO goodsDTO){
-        if (goodsDTO != null) {
-            baseMapper.insert(goodsDTO.toGoodsPO());
+    public boolean insertGoods(Goods goods){
+        if (goods != null) {
+            baseMapper.insert(goods);
             return true;
         }
         return false;
@@ -47,25 +48,41 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements
     }
 
     @Override
-    public boolean updateGoods(GoodsDTO goodsDTO) {
-        if (goodsDTO != null) {
-            baseMapper.updateById(goodsDTO.toGoodsPO());
-        return true;
+    public boolean updateGoods(Goods goods) {
+        if (goods != null) {
+            baseMapper.updateById(goods);
         }
         return true;
     }
 
     @Override
-    public boolean claimGoods(Integer goodsId , Integer goodsStatus) {
-        Goods goods = new Goods();
-        goods.setGoodsId(goodsId);
-        if (goodsStatus == 0){
+    public boolean claimGoods(Goods goods,Date claimTime, String claimDesc, Integer userId, String userName) {
+        if (goods != null){
+            goods.setClaimTime(claimTime);
+            goods.setClaimDesc(claimDesc);
             goods.setGoodsStatus(1);
-
-        }if(goodsStatus == 1){
-            goods.setGoodsStatus(2);
+            goods.setUserId(userId);
+            goods.setUserName(userName);
+            baseMapper.updateById(goods);
         }
-        baseMapper.updateById(goods);
+        return true;
+    }
+
+    @Override
+    public boolean enterClaim(Goods goods) {
+        if (goods != null){
+            goods.setGoodsStatus(2);
+            baseMapper.updateById(goods);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean cancelClaim(Goods goods) {
+        if (goods != null){
+            goods.setGoodsStatus(0);
+            baseMapper.updateById(goods);
+        }
         return true;
     }
 

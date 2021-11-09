@@ -1,7 +1,6 @@
 package com.ou.shiwuzhaoling.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.ou.shiwuzhaoling.entity.dto.UserDTO;
 import com.ou.shiwuzhaoling.entity.po.User;
 
 /**
@@ -19,8 +18,8 @@ public interface UserService extends IService<User> {
 
     /**
      * 用户注册
-     * @param userDTO
+     * @param user
      * @return
      */
-    boolean userRegister(UserDTO userDTO);
+    boolean userRegister(User user);
 }

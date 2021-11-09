@@ -4,6 +4,7 @@ import cn.hutool.db.DaoTemplate;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.ou.shiwuzhaoling.common.BasePageRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,7 @@ import java.util.Date;
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @Table(name = "goods")
-public class Goods {
+public class Goods extends BasePageRequest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,4 +48,17 @@ public class Goods {
 
     @Column(name = "goods_status")
     private Integer goodsStatus;
+
+    @Column(name = "claim_time")
+    private Date claimTime;
+
+    @Column(name = "claim_desc")
+    private String claimDesc;
+
+    @Column(name = "user_id")
+    private Integer userId;
+
+    @Column(name = "user_name")
+    private String userName;
+
 }
