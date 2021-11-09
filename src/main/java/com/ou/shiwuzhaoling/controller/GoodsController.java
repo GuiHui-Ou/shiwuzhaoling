@@ -85,4 +85,11 @@ public class GoodsController extends BaseController {
         int num = goodsService.Num();
         return Result.OK(num);
     }
+
+    @ApiOperation("失物-根据goodsName模糊查询")
+    @GetMapping(value = "/queryByName")
+    public  Result<List<Goods>> queryGoodsByName(@RequestBody Goods goods){
+        List<Goods> goodsList = goodsService.queryGoodsByName(goods.getGoodsName());
+        return Result.OK(goodsList);
+    }
 }

@@ -21,14 +21,14 @@ public interface GoodsService extends IService<Goods> {
     List<Goods> queryGoods(Integer goodsStatus);
 
     /**
-     * 插入失物信息
+     * 用户发布失物信息
      * @param goods
      * @return
      */
     boolean insertGoods(Goods goods);
 
     /**
-     * 删除失物信息
+     * 管理员删除失物信息
      * @param goodsId
      * @return
      */
@@ -42,7 +42,7 @@ public interface GoodsService extends IService<Goods> {
     boolean updateGoods(Goods goods);
 
     /**
-     * 失物认领
+     * 用户认领失物并填写认领信息
      * @param claimTime
      * @param claimDesc
      * @param userId
@@ -52,30 +52,37 @@ public interface GoodsService extends IService<Goods> {
     boolean claimGoods(Goods goods,Date claimTime,String claimDesc,Integer userId,String userName);
 
     /**
-     * 确认认领
+     * 管理员确认认领
      * @param goods
      * @return
      */
     boolean enterClaim(Goods goods);
 
     /**
-     * 取消认领
+     * 用户取消认领失物
      * @param goods
      * @return
      */
     boolean cancelClaim(Goods goods);
 
     /**
-     * 用户认领的失物
+     * 用户查看自己认领的失物的状态
      * @param userId
      * @return Goods
      */
-    List<Goods>userClaim(Integer userId);
+    List<Goods> userClaim(Integer userId);
 
     /**
-     * 认领的总数
+     * 失物的总数
      * @return
      */
     int Num();
+
+    /**
+     * 根据goods Name模糊查询
+     * @param goodsName
+     * @return
+     */
+    List<Goods> queryGoodsByName(String goodsName);
 
 }

@@ -93,5 +93,12 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements
         return baseMapper.Num();
     }
 
+    @Override
+    public List<Goods> queryGoodsByName(String goodsName) {
+        LambdaQueryWrapper<Goods> queryWrapper = new LambdaQueryWrapper<>(Goods.class);
+        queryWrapper.like(Goods::getGoodsName,goodsName);
+        return baseMapper.selectList(queryWrapper);
+    }
+
 
 }
