@@ -1,6 +1,5 @@
 package com.ou.shiwuzhaoling.entity.po;
 
-import cn.hutool.db.DaoTemplate;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -8,7 +7,6 @@ import com.ou.shiwuzhaoling.common.BasePageRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -16,11 +14,11 @@ import java.util.Date;
  * @author leo
  */
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @Table(name = "goods")
-public class Goods extends BasePageRequest {
+public class Goods{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -9,6 +9,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
+
 
 /**
  * @author leo
@@ -23,11 +25,9 @@ public class GoodsController extends BaseController {
 
     @ApiOperation("失物-查找全部或根据认领状态或根据认领类型查找")
     @GetMapping(value = "/query")
-    public Result<IPage<Goods>> queryGoods(@RequestBody Goods goods){
-        Integer pageNum = getIntParam(goods.getPageNum(), 1);
-        Integer pageSize = getPageSize(goods.getPageSize(), 5);
-        IPage<Goods> page = goodsService.queryGoods(pageNum, pageSize, goods.getGoodsType() ,goods.getGoodsStatus());
-        return Result.OK(page);
+    public Result<List<Goods>> queryGoods(@RequestBody Goods goods){
+        List<Goods> goodsList = goodsService.queryGoods(goods.getGoodsType() ,goods.getGoodsStatus());
+        return Result.OK(goodsList);
     }
 
     @ApiOperation("失物-添加失物")
@@ -70,5 +70,12 @@ public class GoodsController extends BaseController {
     public Result cancelClaim(@RequestBody Goods goods){
         goodsService.cancelClaim(goods);
         return Result.OK();
+    }
+
+    @ApiOperation("失物-用户查看自己的认领状况")
+    @GetMapping(value = "/view")
+    public  Result<List<Goods>> userClaim(@RequestBody Goods goods){
+        List<Goods> goodsList = goodsService.userClaim(goods.getUserId());
+        return Result.OK(goodsList);
     }
 }

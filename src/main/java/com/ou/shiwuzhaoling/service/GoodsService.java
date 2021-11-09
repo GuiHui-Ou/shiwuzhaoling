@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.ou.shiwuzhaoling.entity.po.Goods;
 
 import java.util.Date;
+import java.util.List;
+
 
 
 /**
@@ -13,13 +15,11 @@ import java.util.Date;
 public interface GoodsService extends IService<Goods> {
     /**
      * 查询所有失物
-     * @param pageNum
-     * @param pageSize
      * @param goodsType
      * @param goodsStatus
      * @return
      */
-    IPage<Goods> queryGoods(Integer pageNum, Integer pageSize, String goodsType , Integer goodsStatus);
+    List<Goods> queryGoods(String goodsType ,Integer goodsStatus);
 
     /**
      * 插入失物信息
@@ -65,5 +65,12 @@ public interface GoodsService extends IService<Goods> {
      * @return
      */
     boolean cancelClaim(Goods goods);
+
+    /**
+     * 用户认领的失物
+     * @param userId
+     * @return Goods
+     */
+    List<Goods>userClaim(Integer userId);
 
 }

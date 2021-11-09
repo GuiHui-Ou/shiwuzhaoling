@@ -8,8 +8,8 @@ import com.ou.shiwuzhaoling.entity.po.Goods;
 import com.ou.shiwuzhaoling.mapper.GoodsMapper;
 import com.ou.shiwuzhaoling.service.GoodsService;
 import org.springframework.stereotype.Service;
-
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -18,10 +18,8 @@ import java.util.Date;
 @Service
 public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements GoodsService {
 
-
     @Override
-    public IPage<Goods> queryGoods(Integer pageNum, Integer pageSize, String goodsType , Integer goodsStatus){
-        Page<Goods> page = new Page<>(pageNum, pageSize);
+    public List<Goods> queryGoods(String goodsType , Integer goodsStatus){
         LambdaQueryWrapper<Goods> queryWrapper = new LambdaQueryWrapper<>(Goods.class);
         if (goodsStatus != null){
             queryWrapper.eq(Goods::getGoodsStatus,goodsStatus);
@@ -29,7 +27,7 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements
         if (goodsType != null){
             queryWrapper.eq(Goods::getGoodsType,goodsType);
         }
-        return baseMapper.selectPage(page,queryWrapper);
+        return baseMapper.selectList(queryWrapper);
     }
 
     @Override
@@ -85,6 +83,14 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements
         }
         return true;
     }
+
+    @Override
+    public  List<Goods> userClaim(Integer userId) {
+        LambdaQueryWrapper<Goods> queryWrapper = new LambdaQueryWrapper<>(Goods.class);
+        queryWrapper.eq(Goods::getUserId,userId);
+        return baseMapper.selectList(queryWrapper);
+    }
+
 
 
 }
