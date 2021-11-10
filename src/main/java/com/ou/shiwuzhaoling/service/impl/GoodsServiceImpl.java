@@ -1,14 +1,11 @@
 package com.ou.shiwuzhaoling.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ou.shiwuzhaoling.entity.po.Goods;
 import com.ou.shiwuzhaoling.mapper.GoodsMapper;
 import com.ou.shiwuzhaoling.service.GoodsService;
 import org.springframework.stereotype.Service;
-import java.util.Date;
 import java.util.List;
 
 
@@ -51,9 +48,8 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements
     }
 
     @Override
-    public boolean claimGoods(Goods goods,Date claimTime, String claimDesc, Integer userId, String userName) {
+    public boolean claimGoods(Goods goods, String claimDesc, Integer userId, String userName) {
         if (goods != null){
-            goods.setClaimTime(claimTime);
             goods.setClaimDesc(claimDesc);
             goods.setGoodsStatus(1);
             goods.setUserId(userId);

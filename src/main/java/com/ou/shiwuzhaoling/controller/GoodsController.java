@@ -1,6 +1,4 @@
 package com.ou.shiwuzhaoling.controller;
-
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.ou.shiwuzhaoling.common.BaseController;
 import com.ou.shiwuzhaoling.common.Result;
 import com.ou.shiwuzhaoling.entity.po.Goods;
@@ -54,7 +52,7 @@ public class GoodsController extends BaseController {
     @ApiOperation("失物-申请确定失物认领")
     @PostMapping(value = "/claim")
     public Result claimGoods(@RequestBody Goods goods){
-        goodsService.claimGoods(goods,goods.getClaimTime(),goods.getClaimDesc(),goods.getUserId(),goods.getUserName());
+        goodsService.claimGoods(goods,goods.getClaimDesc(),goods.getUserId(),goods.getUserName());
         return Result.OK();
     }
 

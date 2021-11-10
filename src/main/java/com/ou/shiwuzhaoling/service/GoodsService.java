@@ -1,10 +1,7 @@
 package com.ou.shiwuzhaoling.service;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ou.shiwuzhaoling.entity.po.Goods;
-
-import java.util.Date;
 import java.util.List;
 
 
@@ -43,13 +40,13 @@ public interface GoodsService extends IService<Goods> {
 
     /**
      * 用户认领失物并填写认领信息
-     * @param claimTime
+     * @param goods
      * @param claimDesc
      * @param userId
      * @param userName
-     * @return
+     * @return boolean
      */
-    boolean claimGoods(Goods goods,Date claimTime,String claimDesc,Integer userId,String userName);
+    boolean claimGoods(Goods goods,String claimDesc,Integer userId,String userName);
 
     /**
      * 管理员确认认领

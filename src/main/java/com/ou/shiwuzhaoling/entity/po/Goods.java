@@ -46,8 +46,6 @@ public class Goods{
     @Column(name = "goods_status")
     private Integer goodsStatus;
 
-    @Column(name = "claim_time")
-    private Date claimTime;
 
     @Column(name = "claim_desc")
     private String claimDesc;
