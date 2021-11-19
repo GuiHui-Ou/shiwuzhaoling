@@ -6,6 +6,7 @@ import com.ou.shiwuzhaoling.entity.po.User;
 /**
  * @author leo
  */
+
 public interface UserService extends IService<User> {
 
     /**

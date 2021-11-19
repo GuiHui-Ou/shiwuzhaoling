@@ -3,6 +3,7 @@ import com.ou.shiwuzhaoling.common.BaseController;
 import com.ou.shiwuzhaoling.common.Result;
 import com.ou.shiwuzhaoling.entity.po.Goods;
 import com.ou.shiwuzhaoling.service.GoodsService;
+import com.ou.shiwuzhaoling.service.impl.GoodsServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +17,15 @@ import java.util.List;
 @RestController
 @RequestMapping("/goods")
 @Api(tags = "失物信息")
+@CrossOrigin("*")
 public class GoodsController extends BaseController {
 
     @Autowired
-    GoodsService goodsService;
+    GoodsServiceImpl goodsService;
 
     @ApiOperation("失物-查找全部或根据认领状态或根据认领类型查找")
     @GetMapping(value = "/query")
-    public Result<List<Goods>> queryGoods(@RequestBody Goods goods){
+    public Result<List<Goods>> queryGoods(Goods goods){
         List<Goods> goodsList = goodsService.queryGoods(goods.getGoodsStatus());
         return Result.OK(goodsList);
     }
@@ -49,7 +51,7 @@ public class GoodsController extends BaseController {
         return Result.OK();
     }
 
-    @ApiOperation("失物-申请确定失物认领")
+    @ApiOperation("失物-申请失物认领")
     @PostMapping(value = "/claim")
     public Result claimGoods(@RequestBody Goods goods){
         goodsService.claimGoods(goods,goods.getClaimDesc(),goods.getUserId(),goods.getUserName());

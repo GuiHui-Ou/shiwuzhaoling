@@ -6,6 +6,7 @@ import com.ou.shiwuzhaoling.entity.po.Manage;
 /**
  * @author leo
  */
+
 public interface ManageService extends IService<Manage> {
 
     /**

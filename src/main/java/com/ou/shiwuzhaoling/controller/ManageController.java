@@ -3,6 +3,7 @@ package com.ou.shiwuzhaoling.controller;
 import com.ou.shiwuzhaoling.common.Result;
 import com.ou.shiwuzhaoling.entity.po.Manage;
 import com.ou.shiwuzhaoling.service.ManageService;
+import com.ou.shiwuzhaoling.service.impl.ManageServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ManageController {
 
     @Autowired
-    ManageService manageService;
+    ManageServiceImpl manageService;
 
     @ApiModelProperty("管理员登陆")
     @PostMapping(value = "/login")

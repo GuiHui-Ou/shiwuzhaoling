@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * @author leo
  */
+
 public interface GoodsService extends IService<Goods> {
     /**
      * 查询所有失物,或根据认领状态查询

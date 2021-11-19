@@ -9,10 +9,10 @@ import org.springframework.stereotype.Repository;
 /**
  * @author leo
  */
+
 @Mapper
 @Repository
 public interface GoodsMapper extends BaseMapper<Goods> {
-
 
     /**
      * 认领的总数
