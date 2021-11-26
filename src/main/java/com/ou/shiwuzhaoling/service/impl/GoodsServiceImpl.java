@@ -55,8 +55,9 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements
             goods.setUserId(userId);
             goods.setUserName(userName);
             baseMapper.updateById(goods);
+            return true;
         }
-        return true;
+        return false;
     }
 
     @Override
@@ -94,6 +95,11 @@ public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements
         LambdaQueryWrapper<Goods> queryWrapper = new LambdaQueryWrapper<>(Goods.class);
         queryWrapper.like(Goods::getGoodsName,goodsName);
         return baseMapper.selectList(queryWrapper);
+    }
+
+    @Override
+    public Goods queryGoodsById(Integer goodsId) {
+        return baseMapper.selectById(goodsId);
     }
 
 

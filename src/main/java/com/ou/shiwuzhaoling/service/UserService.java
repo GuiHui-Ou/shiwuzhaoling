@@ -15,7 +15,7 @@ public interface UserService extends IService<User> {
      * @param userPassword
      * @return
      */
-    boolean userLogin(String userMobile, String userPassword);
+    User userLogin(String userMobile, String userPassword);
 
     /**
      * 用户注册
@@ -23,4 +23,15 @@ public interface UserService extends IService<User> {
      * @return
      */
     boolean userRegister(User user);
+
+    /**
+     * 用户修改个人信息
+     * @param user
+     * @param userName
+     * @param userPassword
+     * @param userMobile
+     * @param userSex
+     * @return
+     */
+    boolean modifyInformation(User user,String userName,String userPassword,String userMobile,Integer userSex);
 }

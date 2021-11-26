@@ -2,7 +2,6 @@ package com.ou.shiwuzhaoling.controller;
 
 import com.ou.shiwuzhaoling.common.Result;
 import com.ou.shiwuzhaoling.entity.po.User;
-import com.ou.shiwuzhaoling.service.UserService;
 import com.ou.shiwuzhaoling.service.impl.UserServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -23,9 +22,9 @@ public class UserController{
 
     @ApiOperation("用户-登录验证")
     @GetMapping(value = "/login")
-    public Result login(User user){
-        boolean res = userService.userLogin(user.getUserMobile(),user.getUserPassword());
-        return res ? Result.OK() : Result.error("没有该用户");
+    public Result<User> login(User user){
+        User res = userService.userLogin(user.getUserMobile(),user.getUserPassword());
+        return Result.OK(res);
     }
 
     @ApiOperation("用户-注册")
@@ -34,5 +33,14 @@ public class UserController{
         boolean res = userService.userRegister(user);
         return res ? Result.OK() : Result.error("该手机已被注册");
     }
+
+    @ApiOperation("用户-修改个人信息")
+    @PostMapping (value = "/modify")
+    public Result Modify(@RequestBody User user){
+        boolean res = userService.modifyInformation(user, user.getUserName(),user.getUserPassword(), user.getUserMobile(),user.getUserSex());
+        return res ? Result.OK() : Result.error("修改失败");
+    }
+
+
 
 }

@@ -83,4 +83,10 @@ public interface GoodsService extends IService<Goods> {
      */
     List<Goods> queryGoodsByName(String goodsName);
 
+    /**
+     * 根據Id查詢
+     * @param goodsId
+     * @return
+     */
+    Goods queryGoodsById(Integer goodsId);
 }

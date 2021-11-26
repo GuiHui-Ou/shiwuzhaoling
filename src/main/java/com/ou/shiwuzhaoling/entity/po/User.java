@@ -34,4 +34,7 @@ public class User {
     @Column(name = "user_mobile")
     private String userMobile;
 
+    @Column(name = "user_sex")
+    private Integer userSex;
+
 }

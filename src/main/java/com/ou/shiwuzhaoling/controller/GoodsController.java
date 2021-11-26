@@ -53,7 +53,7 @@ public class GoodsController extends BaseController {
 
     @ApiOperation("失物-申请失物认领")
     @PostMapping(value = "/claim")
-    public Result claimGoods(@RequestBody Goods goods){
+    public Result claimGoods( Goods goods){
         goodsService.claimGoods(goods,goods.getClaimDesc(),goods.getUserId(),goods.getUserName());
         return Result.OK();
     }
@@ -91,5 +91,12 @@ public class GoodsController extends BaseController {
     public  Result<List<Goods>> queryGoodsByName(@RequestBody Goods goods){
         List<Goods> goodsList = goodsService.queryGoodsByName(goods.getGoodsName());
         return Result.OK(goodsList);
+    }
+
+    @ApiOperation("失物-根据goodsId查询")
+    @GetMapping(value = "/queryById")
+    public  Result<Goods> queryGoodsById(Goods goods){
+        Goods good = goodsService.queryGoodsById(goods.getGoodsId());
+        return Result.OK(good);
     }
 }
